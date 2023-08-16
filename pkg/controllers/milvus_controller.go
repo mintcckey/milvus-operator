@@ -134,6 +134,7 @@ func (r *MilvusReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 	old := milvus.DeepCopy()
 	milvus.Default()
 
+	// will not reconcile everything
 	if milvus.GetAnnotations()[PauseReconcileAnnotation] == "true" {
 		return ctrl.Result{}, nil
 	}
